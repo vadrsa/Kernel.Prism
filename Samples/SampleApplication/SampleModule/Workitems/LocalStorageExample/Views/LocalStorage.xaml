@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="SampleModule.Workitems.LocalStorageExample.Views.LocalStorage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:local="clr-namespace:SampleModule.Workitems.LocalStorageExample.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin=" 20">
+            <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0 10 0 10" TextWrapping="Wrap">A workitem has an ability to store encripted key value pairs locally</TextBlock>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 10">
+                <Label>Key: </Label>
+                <TextBox Width="200" Text="{Binding Key}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 10">
+                <Label>Value: </Label>
+                <TextBox Width="200" Text="{Binding Value}"/>
+            </StackPanel>
+
+            <Button Width="250" HorizontalAlignment="Center" Content="Save" Command="{Binding SaveCommand}" Margin="0 10 0 10"/>
+        </StackPanel>
+        <StackPanel Margin="20" Grid.Column="1">
+            <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="0 10 0 10" TextWrapping="Wrap">You can than request the value based on a key</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 10">
+                <Label>Key:</Label>
+                <TextBox Text="{Binding GetterKey}" Width="200"/>
+            </StackPanel>
+
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 10">
+                <TextBlock Text="{Binding GetterValue, FallbackValue='The value will appear here'}" Width="250"/>
+            </StackPanel>
+
+            <Button Width="250" HorizontalAlignment="Center" Content="Request" Command="{Binding RequestCommand}" Margin="0 10 0 10"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
